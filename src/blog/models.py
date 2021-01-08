@@ -25,7 +25,7 @@ class Post(models.Model):
     image = models.ImageField(
         upload_to = user_directory_path, default = 'django.jpg'
     )
-    category = models.ForeignKey(Category, on_delete=models.PROTECT)
+    category = models.ForeignKey(Category, on_delete=models.PROTECT, related_name="cats")
     published_date = models.DateTimeField(auto_now_add = True)
     last_updated = models.DateTimeField(auto_now = True)
     author = models.ForeignKey(User, on_delete= models.CASCADE)
@@ -41,6 +41,8 @@ class Post(models.Model):
         return self.postview_set.all().count()
     def like_count(self):
         return self.like_set.all().count()
+    def comments(self):
+        return self.comment_set.all()
     
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

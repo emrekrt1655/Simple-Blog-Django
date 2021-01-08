@@ -5,5 +5,24 @@
 <h1>{{ object.title }}</h1>
     <img src="{{ object.image.url }}" alt="">
 <p>{{ object.content}}</p>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Comment</button>
+</form> <br>
+{% for comment in object.comments %}
+<p>comment by {{ user }} </p>
+{{ comment.content }}
+{% endfor %}
+
+<form action="{% url 'blog:like' object.slug %}" method="POST">
+    {% csrf_token %}
+
+    <input type="hidden" , name="post">
+    <input type="hidden" , name="user">
+    <button type="submit">Like</button> {{ object.like_count }}
+
+</form>
+
 {% endblock content %}
     
