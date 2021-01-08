@@ -10,7 +10,7 @@
             <span><i class="far fa-comment-alt ml-2"></i></i> {{ object.comment_count }}</span>
             <span><i class="fas fa-eye ml-2"></i> {{ object.view_count }}</span>
             <span><i class="far fa-heart ml-2"></i> {{ object.like_count }}</span>
-            <span class="float-right"> <small>Posted {{ object.publishe_date|timesince }} ago.</small> </span>
+            <span class="float-right"> <small>Posted {{ object.published_date|timesince }} ago.</small> </span>
         </div>
         <hr>
         <p class="card-text">{{ object.content }}.</p>
